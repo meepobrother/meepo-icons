@@ -40,6 +40,7 @@ export class InlineSVGComponent implements AfterViewInit, OnChanges {
   }
 
   private _updateContent(): void {
+    console.log(this);
     insertEl(this.context, this._el.nativeElement, this.content, this.replaceContents, this.prepend);
   }
 }

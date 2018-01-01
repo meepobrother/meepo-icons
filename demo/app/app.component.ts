@@ -7,6 +7,16 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'app';
-  constructor() {}
-  ngOnInit(){}
+  num: number = 10;
+  constructor() { }
+  ngOnInit() { }
+
+  onClick(e: any) {
+    console.log(e);
+    if (e) {
+      this.num++;
+    } else {
+      this.num--;
+    }
+  }
 }

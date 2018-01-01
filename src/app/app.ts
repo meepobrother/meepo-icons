@@ -1,13 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { VersionnComponent } from './version';
-
+import { InlineSVGModule } from './src';
+import { HttpClientModule } from '@angular/common/http';
+import { MeepoIconComponent } from './icons/meepo-icon';
 @NgModule({
     declarations: [
-        VersionnComponent
+        MeepoIconComponent
     ],
-    imports: [ CommonModule ],
-    exports: [],
+    imports: [
+        CommonModule,
+        InlineSVGModule,
+        HttpClientModule
+    ],
+    exports: [
+        MeepoIconComponent
+    ],
     providers: [],
 })
-export class AppModule {}
+export class IconsModule { }
+export { InlineSVGModule, SVGCacheService, InlineSVGDirective } from './src';

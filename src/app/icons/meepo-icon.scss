@@ -1,0 +1,18 @@
+meepo-icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+}
+
+.meepo-icon {
+    display: inline-block;
+    vertical-align: middle;
+    .icon {
+        width: 30px;
+        height: 30px;
+        path {
+            fill: orangered;
+        }
+    }
+}

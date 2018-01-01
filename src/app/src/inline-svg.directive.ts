@@ -66,13 +66,11 @@ export class InlineSVGDirective implements OnInit, OnChanges, OnDestroy {
 
   ngOnInit(): void {
     if (!isPlatformBrowser(this.platformId)) { return; }
-
     this._insertSVG();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (!isPlatformBrowser(this.platformId)) { return; }
-
     if (changes['inlineSVG']) {
       this._insertSVG();
     }
@@ -95,9 +93,7 @@ export class InlineSVGDirective implements OnInit, OnChanges, OnDestroy {
       const elSvgUse = document.createElementNS('http://www.w3.org/2000/svg', 'use');
       elSvgUse.setAttributeNS('http://www.w3.org/1999/xlink', 'href', this.inlineSVG);
       elSvg.appendChild(elSvgUse);
-
       this._insertEl(elSvg);
-
       this.onSVGInserted.emit(elSvg);
       return;
     }
