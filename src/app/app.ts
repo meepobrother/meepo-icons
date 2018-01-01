@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { InlineSVGModule } from './src';
+import { InlineSVGModule } from 'ng-inline-svg';
 import { HttpClientModule } from '@angular/common/http';
 import { MeepoIconComponent } from './icons/meepo-icon';
 @NgModule({
@@ -18,4 +18,3 @@ import { MeepoIconComponent } from './icons/meepo-icon';
     providers: [],
 })
 export class IconsModule { }
-export { InlineSVGModule, SVGCacheService, InlineSVGDirective } from './src';
