@@ -17,9 +17,12 @@ let tsFileTester = /\.ts$/;
 let stylesRegex = /styleUrls *:(\s*\[[^\]]*?\])/g;
 let htmlRegex = /templateUrl\s*:\s*\'(\S*?)\'/g;
 let imageRegex = /url\([\'\"](\S*?\.png)[\'\"]\)/g;
+let eotRegex = /url\([\'\"](\S*?\.eot)[\'\"]\)/g;
+
 
 let stringRegex = /(['"])((?:[^\\]\\\1|.)*?)\1/g;
 let lessNumRegex = /style_(\d+)_less/g;
+
 
 function cssImage(css, file) {
     return new Promise((resolve, reject) => {
@@ -36,8 +39,19 @@ function cssImage(css, file) {
                 let base64 = 'url(data:image/png;base64,' + content.toString("base64") + ')';
                 return base64;
             });
+
             css = contentTemp;
         }
+        css = css.toString().replace(eotRegex, function (match, fileName) {
+            fileName = fileName.replace("'", '');
+            fileName = fileName.replace("'", '');
+            fileName = fileName.replace('"', '');
+            fileName = fileName.replace('"', '');
+            let filePath = pathUtil.resolve(pathUtil.dirname(file), fileName);
+            let content = fs.readFileSync(filePath);
+            let base64 = 'url(data:image/png;base64,' + content.toString("base64") + ')';
+            return base64;
+        });
         css.replace(/\\e/g, function (match, e) {
             // 对content中的类似'\e630'中的\e进行处理
             return '\\\\e';
@@ -125,6 +139,12 @@ function writeBackCss(path) {
 }
 
 function saveToCss(res) {
+    let a = fs.readFileSync(cssPath);
+    a = a + res;
+    fs.writeFileSync(cssPath, a);
+}
+
+function saveFontToCss(res) {
     let a = fs.readFileSync(cssPath);
     a = a + res;
     fs.writeFileSync(cssPath, a);
