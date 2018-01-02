@@ -3,9 +3,11 @@ import { CommonModule } from '@angular/common';
 import { InlineSVGModule } from 'ng-inline-svg';
 import { HttpClientModule } from '@angular/common/http';
 import { MeepoIconComponent } from './icons/meepo-icon';
+import { IonComponent } from './ion/ion';
 @NgModule({
     declarations: [
-        MeepoIconComponent
+        MeepoIconComponent,
+        IonComponent
     ],
     imports: [
         CommonModule,
@@ -13,7 +15,8 @@ import { MeepoIconComponent } from './icons/meepo-icon';
         HttpClientModule
     ],
     exports: [
-        MeepoIconComponent
+        MeepoIconComponent,
+        IonComponent
     ],
     providers: [],
 })
