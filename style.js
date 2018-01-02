@@ -17,7 +17,7 @@ let tsFileTester = /\.ts$/;
 let stylesRegex = /styleUrls *:(\s*\[[^\]]*?\])/g;
 let htmlRegex = /templateUrl\s*:\s*\'(\S*?)\'/g;
 let imageRegex = /url\([\'\"](\S*?\.png)[\'\"]\)/g;
-let eotRegex = /url\([\'\"](\S*?\.svg)[\'\"]\)/g;
+let eotRegex = /url\([\'\"](\S*?\.ttf)[\'\"]\)/g;
 
 
 let stringRegex = /(['"])((?:[^\\]\\\1|.)*?)\1/g;
